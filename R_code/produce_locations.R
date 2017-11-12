@@ -4,6 +4,9 @@ states <- read_csv("statecapitals.csv")
 stateAbbr <- read_csv("stateabbrev.csv")
 stateAbbr <- stateAbbr[-9,] #Gets rid of DC (tofix later)
 
+states <- states[order(states$name),]
+stateAbbr <- stateAbbr[order(stateAbbr$State),]
+
 states$abbr <- stateAbbr$Abbreviation
 
 stateString <- "{\"id\": \"THREESTATECODE\", \"iso2Code\": \"STATECODE\", \"name\": \"STATENAME\", \"region\": {\"id\": \"REGIONID\", \"value\": \"REGION NAME\"}, \"adminregion\": {\"id\": \"REGIONID\", \"value\": \"REGION NAME\"}, \"incomeLevel\": {\"id\": \"LIC\", \"value\": \"Low income\"}, \"lendingType\": {\"id\": \"IDX\", \"value\": \"IDA\"}, \"capitalCity\": \"CAPITALCITYNAME\", \"longitude\": \"LONGDATA\", \"latitude\": \"LATDATA\"},"
@@ -26,3 +29,4 @@ for(i in 1:50) {
 fileConn<-file("output.txt")
 writeLines(states$stateIDString, fileConn)
 close(fileConn)
+
