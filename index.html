@@ -1596,11 +1596,11 @@ var ONE_SECOND = 1000,
                     d.img && d.img.width > 0 && d.img.height > 0 ? d.img.outerHTML : "",
                     " Country: <b>",
                     d.nodeValue.shortName,
-                    "</b><hr/>Supplied ($): <b>",
-                    th(d.nodeValue.supplied),
-                    "M.</b><br/>Borrowed ($): <b>",
-                    th(d.nodeValue.borrowed),
-                    "M.</b><br/>"
+                    // "</b><hr/>Supplied ($): <b>",
+                    // th(d.nodeValue.supplied),
+                    // "M.</b><br/>Borrowed ($): <b>",
+                    // th(d.nodeValue.borrowed),
+                    // "M.</b><br/>"
                 ];
             }
             else {
@@ -1610,7 +1610,7 @@ var ONE_SECOND = 1000,
                     "</b><br/>Date: <b>",
                     shortTimeFormat(d.nodeValue.contract.date),
                     "</b><hr/>Location: <b>",
-                    "(", d.nodeValue.project.id, ") ",
+                    // "(", d.nodeValue.project.id, ") ",
                     d.nodeValue.project.name,
                     // "</b><br/>Product line: <b",
                     // cat == "Product line" ? ' style="text-shadow: 0 0 2px rgba(0, 0, 0, .8);color:' + extColor(d.nodeValue[cat]) + '"' : "",
@@ -1621,7 +1621,7 @@ var ONE_SECOND = 1000,
                     ">",
                     d.nodeValue.sector,
                     "</b><hr/>Short Description of Death: <b>",
-                    "<br/>Bla person was shot by gun </b>",
+                    "<br/>", d.nodeValue.supplierdesc, "</b><br/>",
                     // d.nodeValue.procurement.type,
                     // "</b><br/>• Method: <b",
                     // cat == "Procurement Method" ? ' style="text-shadow: 0 0 2px rgba(0, 0, 0, .8);color:' + extColor(d.nodeValue[cat]) + '"' : "",
@@ -1631,10 +1631,10 @@ var ONE_SECOND = 1000,
                     // cat == "Procurement Category" ? ' style="text-shadow: 0 0 2px rgba(0, 0, 0, .8);color:' + extColor(d.nodeValue[cat]) + '"' : "",
                     // ">",
                     // d.nodeValue.procurement.category,
-                    "</b><hr/>Region: <b>",
-                    d.nodeValue.Region,
+                    "</b><hr/>Region: <b> USA",
+                    // d.nodeValue.Region,
                     // "</b><br/>Supplier: <b>",
-                    // d.nodeValue.supplier.name,
+                    // d.nodeValue.supplier.name
                     // "</b><br/>Borrower: <b>",
                     // d.nodeValue.borrower.name,
                     // "</b><br/>Borrowed ($): <b>",
@@ -2032,6 +2032,7 @@ var ONE_SECOND = 1000,
         d.value = d.basevalue = parseInt(d["Total Contract Amount (USD)"].substring(1));
         d.valueOf = value;
 
+        d.supplierdesc = d["Supplier"];
         d.borrower = initCounty(d["Borrower Country Code"], d["Borrower Country"]);
         d.borrower.borrowed += d.value;
         d.supplier = initCounty(d["Supplier Country Code"], d["Supplier Country"]);
