@@ -11,7 +11,7 @@
 <script charset="utf-8" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.3.13/d3.min.js"></script>
 <script charset="utf-8" src="https://rawgithub.com/artzub/dbsv/master/progressbar.js"></script>
 <script charset="utf-8" src="https://rawgithub.com/artzub/dbsv/master/tooltip.js"></script>
-<script charset="utf-8" src="https://rawgithub.com/artzub/wbgds/smy/wbc.js"></script>
+<script charset="utf-8" src="wbc.js"></script>
 
 <style>
     html, body {
@@ -1605,43 +1605,41 @@ var ONE_SECOND = 1000,
             }
             else {
                 res = [
-                    "Contract: <b>",
+                    "Victim: <b>",
                     d.nodeValue.contract.desc,
                     "</b><br/>Date: <b>",
                     shortTimeFormat(d.nodeValue.contract.date),
-                    "</b><hr/>Project: <b>",
+                    "</b><hr/>Location: <b>",
                     "(", d.nodeValue.project.id, ") ",
                     d.nodeValue.project.name,
-                    "</b><br/>Product line: <b",
-                    cat == "Product line" ? ' style="text-shadow: 0 0 2px rgba(0, 0, 0, .8);color:' + extColor(d.nodeValue[cat]) + '"' : "",
-                    ">",
-                    d.nodeValue.product,
-                    "</b><br/>Major Sector: <b",
-                    cat == "Major Sector" ? ' style="text-shadow: 0 0 2px rgba(0, 0, 0, .8);color:' + extColor(d.nodeValue[cat]) + '"' : "",
+                    // "</b><br/>Product line: <b",
+                    // cat == "Product line" ? ' style="text-shadow: 0 0 2px rgba(0, 0, 0, .8);color:' + extColor(d.nodeValue[cat]) + '"' : "",
+                    // ">",
+                    // d.nodeValue.product,
+                    "</b><br/>Death Category: <b",
+                    cat == "Death Category" ? ' style="text-shadow: 0 0 2px rgba(0, 0, 0, .8);color:' + extColor(d.nodeValue[cat]) + '"' : "",
                     ">",
                     d.nodeValue.sector,
-                    "</b><hr/>Procurement: <b>",
-                    "</b><br/>• Type: <b",
-                    cat == "Procurement Type" ? ' style="text-shadow: 0 0 2px rgba(0, 0, 0, .8);color:' + extColor(d.nodeValue[cat]) + '"' : "",
-                    ">",
-                    d.nodeValue.procurement.type,
-                    "</b><br/>• Method: <b",
-                    cat == "Procurement Method" ? ' style="text-shadow: 0 0 2px rgba(0, 0, 0, .8);color:' + extColor(d.nodeValue[cat]) + '"' : "",
-                    ">",
-                    d.nodeValue.procurement.method,
-                    "</b><br/>• Category: <b",
-                    cat == "Procurement Category" ? ' style="text-shadow: 0 0 2px rgba(0, 0, 0, .8);color:' + extColor(d.nodeValue[cat]) + '"' : "",
-                    ">",
-                    d.nodeValue.procurement.category,
+                    "</b><hr/>Short Description of Death: <b>",
+                    "<br/>Bla person was shot by gun </b>",
+                    // d.nodeValue.procurement.type,
+                    // "</b><br/>• Method: <b",
+                    // cat == "Procurement Method" ? ' style="text-shadow: 0 0 2px rgba(0, 0, 0, .8);color:' + extColor(d.nodeValue[cat]) + '"' : "",
+                    // ">",
+                    // d.nodeValue.procurement.method,
+                    // "</b><br/>• Category: <b",
+                    // cat == "Procurement Category" ? ' style="text-shadow: 0 0 2px rgba(0, 0, 0, .8);color:' + extColor(d.nodeValue[cat]) + '"' : "",
+                    // ">",
+                    // d.nodeValue.procurement.category,
                     "</b><hr/>Region: <b>",
                     d.nodeValue.Region,
-                    "</b><br/>Supplier: <b>",
-                    d.nodeValue.supplier.name,
-                    "</b><br/>Borrower: <b>",
-                    d.nodeValue.borrower.name,
-                    "</b><br/>Borrowed ($): <b>",
-                    th(+d.nodeValue),
-                    "M.</b><br/>"
+                    // "</b><br/>Supplier: <b>",
+                    // d.nodeValue.supplier.name,
+                    // "</b><br/>Borrower: <b>",
+                    // d.nodeValue.borrower.name,
+                    // "</b><br/>Borrowed ($): <b>",
+                    // th(+d.nodeValue),
+                    // "M.</b><br/>"
                 ];
             }
 
@@ -1989,9 +1987,10 @@ var ONE_SECOND = 1000,
                 name : cc.capitalCity,
                 coord : coord(cc.longitude, cc.latitude)
             };
+
             c.x = c.capitalCity.coord.x;
             c.y = c.capitalCity.coord.y;
-
+            console.log(`Capital City Name: ${c.capitalCity.name}\n Coords: ${cc.longitude}, ${cc.latitude}`);
             needPaintCapital.push(cc);
 
             preload(c);
